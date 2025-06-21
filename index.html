@@ -6,7 +6,7 @@
   <title>Badanie Echokardiograficzne</title>
   <!-- Biblioteki do eksportu DOCX -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.4.1/html-docx.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.3.1/html-docx.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
     * { box-sizing: border-box; }
@@ -85,7 +85,6 @@
         <label for="patient">Pacjent:</label>
         <input type="text" id="patient" name="patient" placeholder="Imię i nazwisko" />
       </div>
-
       <h2>Wymiary jam serca</h2>
       <div class="form-section">
         <label>LV (mm): <input type="number" id="LV" name="LV" /></label>
@@ -98,14 +97,12 @@
         <label>IVS (mm): <input type="number" id="IVS" name="IVS" /></label>
         <label>PW (mm): <input type="number" id="PW" name="PW" /></label>
       </div>
-
       <h2>Szerokość pni naczyniowych</h2>
       <div class="form-section">
         <label>Ao op (mm): <input type="number" id="Ao_op" name="Ao_op" /></label>
         <label>Ao asc (mm): <input type="number" id="Ao_asc" name="Ao_asc" /></label>
         <label>PA (mm): <input type="number" id="PA" name="PA" /></label>
       </div>
-
       <div class="form-section">
         <label for="EF">Frakcja wyrzutowa (EF, %):</label>
         <input type="number" id="EF" name="EF" />
@@ -118,7 +115,6 @@
           <option value="TAK">TAK</option>
         </select>
       </div>
-
       <h2>Zastawki</h2>
       <div class="form-section">
         <h3>Mitralna</h3>
@@ -132,7 +128,6 @@
         <label>Vmax (m/s): <input type="number" id="MS_Vmax" name="MS_Vmax" step="0.01" /></label>
         <label>SPAP (mmHg): <input type="number" id="SPAP" name="SPAP" /></label>
       </div>
-
       <div class="form-section">
         <h3>Aortalna</h3>
         <label>AR VC (mm): <input type="number" id="AR_VC" name="AR_VC" /></label>
@@ -144,7 +139,6 @@
         <label>Vmax (m/s): <input type="number" id="AS_Vmax" name="AS_Vmax" step="0.01" /></label>
         <label>AVA (cm²): <input type="number" id="AVA" name="AVA" step="0.01" /></label>
       </div>
-
       <div class="form-section">
         <h3>Trójdzielna</h3>
         <label>VC (mm): <input type="number" id="tri_VC" name="tri_VC" /></label>
@@ -153,7 +147,6 @@
         <label>TAPSE (mm): <input type="number" id="TAPSE" name="TAPSE" /></label>
         <label>SPAP (mmHg): <input type="number" id="tri_SPAP" name="tri_SPAP" /></label>
       </div>
-
       <div class="form-section">
         <h3>Pnia płucnego</h3>
         <label>AcT (m/s): <input type="number" id="AcT" name="AcT" step="0.01" /></label>
@@ -161,7 +154,6 @@
         <label>Vmax diastole (m/s): <input type="number" id="Vmax_dia" name="Vmax_dia" step="0.01" /></label>
         <label>RVSP (mmHg): <input type="number" id="RVSP" name="RVSP" /></label>
       </div>
-
       <div class="form-section">
         <label for="osierdzie">Osierdzie:</label>
         <select id="osierdzie" name="osierdzie">
@@ -170,38 +162,42 @@
           <option value="z płynem">z płynem</option>
         </select>
       </div>
-
       <div class="form-section">
         <label for="opis">Opis dodatkowy:</label>
         <textarea id="opis" name="opis" rows="4" placeholder="Dodatkowe uwagi..."></textarea>
       </div>
-
       <div class="form-section">
         <label for="wnioski">Wnioski:</label>
         <textarea id="wnioski" name="wnioski" rows="4" placeholder="Wnioski z badania..."></textarea>
       </div>
-
       <button type="button" class="button" onclick="generateReport()">Eksportuj do DOCX</button>
     </form>
-
     <div id="report" style="display:none;"></div>
   </div>
-
   <script>
     function generateReport() {
-      const fields = ["date","patient","LV","LA","LAA","RV","RAA","IVS","PW","Ao_op","Ao_asc","PA","EF","regional","mitral_EA","MR_VC","PISA","mitral_LAA","jet_area","MS_MxPG","MS_MnPG","MS_Vmax","SPAP","AR_VC","wave_width","LVOT","PHT","AS_MxPG","AS_MnPG","AS_Vmax","AVA","tri_VC","tri_jet","tri_MxPG","TAPSE","tri_SPAP","AcT","Vmax_sys","Vmax_dia","RVSP","osierdzie","opis","wnioski"];
-      let html = '<h1>Badanie Echokardiograficzne</h1>';
+      const fields = [
+        "date","patient","LV","LA","LAA","RV","RAA","IVS","PW",
+        "Ao_op","Ao_asc","PA","EF","regional","mitral_EA","MR_VC",
+        "PISA","mitral_LAA","jet_area","MS_MxPG","MS_MnPG","MS_Vmax",
+        "SPAP","AR_VC","wave_width","LVOT","PHT","AS_MxPG","AS_MnPG",
+        "AS_Vmax","AVA","tri_VC","tri_jet","tri_MxPG","TAPSE","tri_SPAP",
+        "AcT","Vmax_sys","Vmax_dia","RVSP","osierdzie","opis","wnioski"
+      ];
+      let htmlBody = '<h1>Badanie Echokardiograficzne</h1>';
       fields.forEach(id => {
         const el = document.getElementById(id);
         if (el && el.value) {
           const label = document.querySelector('label[for="'+id+'"]') || el.parentElement;
-          html += `<p><strong>${label.textContent.trim()}</strong> ${el.value}</p>`;
+          htmlBody += `<p><strong>${label.textContent.trim()}</strong> ${el.value}</p>`;
         }
       });
-      const report = document.getElementById("report");
-      report.innerHTML = html;
-      const converted = HTMLDocx.asBlob(report.innerHTML);
-      saveAs(converted, "raport.docx");
+      const fullHtml = '<!DOCTYPE html>' +
+                       '<html><head><meta charset="UTF-8"></head><body>' +
+                       htmlBody +
+                       '</body></html>';
+      const blob = htmlDocx.asBlob(fullHtml);
+      saveAs(blob, 'raport.docx');
     }
   </script>
 </body>
