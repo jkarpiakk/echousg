@@ -6,7 +6,7 @@
   <title>Badanie Echokardiograficzne</title>
   <!-- Biblioteki do eksportu DOCX -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/html-docx-js/dist/html-docx.js"></script>  <!-- użycie wersji dist z jsdelivr, definiuje globalny HTMLDocx -->
+  <script src="https://cdn.jsdelivr.net/npm/html-docx-js/dist/html-docx.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
     * { box-sizing: border-box; }
@@ -34,15 +34,9 @@
     h1 { font-size: 28px; }
     h2 { font-size: 22px; margin-top: 30px; }
     h3 { font-size: 18px; margin-top: 20px; }
-    .form-section {
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-    input[type="text"], input[type="number"], input[type="date"], select, textarea {
+    .form-section { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 8px; font-weight: 500; }
+    input, select, textarea {
       width: 100%;
       padding: 10px 12px;
       border: 2px solid #c8e6c9;
@@ -57,7 +51,6 @@
     }
     textarea { resize: vertical; }
     .button {
-      display: inline-block;
       background: #2e7d32;
       color: #fff;
       border: none;
@@ -67,10 +60,9 @@
       cursor: pointer;
       transition: background 0.2s;
       margin-top: 10px;
+      display: inline-block;
     }
-    .button:hover {
-      background: #1b5e20;
-    }
+    .button:hover { background: #1b5e20; }
   </style>
 </head>
 <body>
@@ -172,11 +164,9 @@
       </div>
       <button type="button" class="button" onclick="generateReport()">Eksportuj do DOCX</button>
     </form>
-    <div id="report" style="display:none;"></div>
   </div>
   <script>
-    // Debug: sprawdź dostępność obiektu htmlDocx
-    console.log('htmlDocx:', typeof htmlDocx);
+    console.log('HTMLDocx:', typeof HTMLDocx);
     function generateReport() {
       const fields = [
         "date","patient","LV","LA","LAA","RV","RAA","IVS","PW",
@@ -190,7 +180,7 @@
       fields.forEach(id => {
         const el = document.getElementById(id);
         if (el && el.value) {
-          const label = document.querySelector('label[for="'+id+'"]') || el.parentElement;
+          const label = document.querySelector(`label[for="${id}"]`) || el.parentElement;
           htmlBody += `<p><strong>${label.textContent.trim()}</strong> ${el.value}</p>`;
         }
       });
@@ -198,33 +188,7 @@
                        '<html><head><meta charset="UTF-8"></head><body>' +
                        htmlBody +
                        '</body></html>';
-      // Użycie obiektu htmlDocx według debugu
-      const blob = (typeof htmlDocx !== 'undefined' ? htmlDocx : HTMLDocx).asBlob(fullHtml);
-      saveAs(blob, 'raport.docx');
-    }
-  </script>
-    function generateReport() {
-      const fields = [
-        "date","patient","LV","LA","LAA","RV","RAA","IVS","PW",
-        "Ao_op","Ao_asc","PA","EF","regional","mitral_EA","MR_VC",
-        "PISA","mitral_LAA","jet_area","MS_MxPG","MS_MnPG","MS_Vmax",
-        "SPAP","AR_VC","wave_width","LVOT","PHT","AS_MxPG","AS_MnPG",
-        "AS_Vmax","AVA","tri_VC","tri_jet","tri_MxPG","TAPSE","tri_SPAP",
-        "AcT","Vmax_sys","Vmax_dia","RVSP","osierdzie","opis","wnioski"
-      ];
-      let htmlBody = '<h1>Badanie Echokardiograficzne</h1>';
-      fields.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && el.value) {
-          const label = document.querySelector('label[for="'+id+'"]') || el.parentElement;
-          htmlBody += `<p><strong>${label.textContent.trim()}</strong> ${el.value}</p>`;
-        }
-      });
-      const fullHtml = '<!DOCTYPE html>' +
-                       '<html><head><meta charset="UTF-8"></head><body>' +
-                       htmlBody +
-                       '</body></html>';
-      const blob = HTMLDocx.asBlob(fullHtml);  // wywołanie na globalnym HTMLDocx z dist jsdelivr
+      const blob = HTMLDocx.asBlob(fullHtml);
       saveAs(blob, 'raport.docx');
     }
   </script>
