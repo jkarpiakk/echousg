@@ -6,10 +6,10 @@
   <title>Badanie Echokardiograficzne</title>
   <!-- Biblioteki do eksportu DOCX -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/html-docx-js/dist/html-docx.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.4.0/dist/html-docx.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
@@ -17,7 +17,9 @@
       color: #333;
       display: flex;
       justify-content: center;
+      align-items: flex-start;
       padding: 20px;
+      min-height: 100vh;
     }
     .container {
       background: #fff;
@@ -69,6 +71,7 @@
   <div class="container">
     <h1>Badanie Echokardiograficzne</h1>
     <form id="echoForm">
+      <!-- Podstawowe dane -->
       <div class="form-section">
         <label for="date">Data badania:</label>
         <input type="date" id="date" name="date" />
@@ -77,6 +80,7 @@
         <label for="patient">Pacjent:</label>
         <input type="text" id="patient" name="patient" placeholder="Imię i nazwisko" />
       </div>
+      <!-- Wymiary jam serca -->
       <h2>Wymiary jam serca</h2>
       <div class="form-section">
         <label>LV (mm): <input type="number" id="LV" name="LV" /></label>
@@ -89,12 +93,14 @@
         <label>IVS (mm): <input type="number" id="IVS" name="IVS" /></label>
         <label>PW (mm): <input type="number" id="PW" name="PW" /></label>
       </div>
+      <!-- Szerokość pni naczyniowych -->
       <h2>Szerokość pni naczyniowych</h2>
       <div class="form-section">
         <label>Ao op (mm): <input type="number" id="Ao_op" name="Ao_op" /></label>
         <label>Ao asc (mm): <input type="number" id="Ao_asc" name="Ao_asc" /></label>
         <label>PA (mm): <input type="number" id="PA" name="PA" /></label>
       </div>
+      <!-- EF i kurczliwość -->
       <div class="form-section">
         <label for="EF">Frakcja wyrzutowa (EF, %):</label>
         <input type="number" id="EF" name="EF" />
@@ -107,6 +113,7 @@
           <option value="TAK">TAK</option>
         </select>
       </div>
+      <!-- Zastawki -->
       <h2>Zastawki</h2>
       <div class="form-section">
         <h3>Mitralna</h3>
@@ -115,8 +122,8 @@
         <label>PISA (mm): <input type="number" id="PISA" name="PISA" /></label>
         <label>LAA (cm²): <input type="number" id="mitral_LAA" name="mitral_LAA" step="0.01" /></label>
         <label>Jet area (cm²): <input type="number" id="jet_area" name="jet_area" step="0.01" /></label>
-        <label>MS MxPG (mmHg): <input type="number" id="MS_MxPG" name="MS_MxPG" /></label>
-        <label>MS MnPG (mmHg): <input type="number" id="MS_MnPG" name="MS_MnPG" /></label>
+        <label>Ms MxPG (mmHg): <input type="number" id="MS_MxPG" name="MS_MxPG" /></label>
+        <label>Ms MnPG (mmHg): <input type="number" id="MS_MnPG" name="MS_MnPG" /></label>
         <label>Vmax (m/s): <input type="number" id="MS_Vmax" name="MS_Vmax" step="0.01" /></label>
         <label>SPAP (mmHg): <input type="number" id="SPAP" name="SPAP" /></label>
       </div>
@@ -126,8 +133,8 @@
         <label>Szerokość fali (mm): <input type="number" id="wave_width" name="wave_width" /></label>
         <label>LVOT (mm): <input type="number" id="LVOT" name="LVOT" /></label>
         <label>PHT (m/s): <input type="number" id="PHT" name="PHT" /></label>
-        <label>AS MxPG (mmHg): <input type="number" id="AS_MxPG" name="AS_MxPG" /></label>
-        <label>AS MnPG (mmHg): <input type="number" id="AS_MnPG" name="AS_MnPG" /></label>
+        <label>As MxPG (mmHg): <input type="number" id="AS_MxPG" name="AS_MxPG" /></label>
+        <label>As MnPG (mmHg): <input type="number" id="AS_MnPG" name="AS_MnPG" /></label>
         <label>Vmax (m/s): <input type="number" id="AS_Vmax" name="AS_Vmax" step="0.01" /></label>
         <label>AVA (cm²): <input type="number" id="AVA" name="AVA" step="0.01" /></label>
       </div>
@@ -166,7 +173,6 @@
     </form>
   </div>
   <script>
-    console.log('HTMLDocx:', typeof HTMLDocx);
     function generateReport() {
       const fields = [
         "date","patient","LV","LA","LAA","RV","RAA","IVS","PW",
@@ -184,8 +190,7 @@
           htmlBody += `<p><strong>${label.textContent.trim()}</strong> ${el.value}</p>`;
         }
       });
-      const fullHtml = '<!DOCTYPE html>' +
-                       '<html><head><meta charset="UTF-8"></head><body>' +
+      const fullHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>' +
                        htmlBody +
                        '</body></html>';
       const blob = HTMLDocx.asBlob(fullHtml);
