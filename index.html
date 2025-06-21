@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Badanie echokardiograficzne</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; max-width: 600px; }
+    td { padding: 6px; vertical-align: top; }
+    td.label { width: 200px; font-weight: bold; }
+    input, textarea { width: 100%; box-sizing: border-box; }
+    .btn { margin-top: 10px; padding: 10px 15px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Badanie echokardiograficzne</h1>
+  <form id="echo-form">
+    <table>
+      <tr><td class="label">Pacjent:</td><td><input type="text" id="patientName"></td></tr>
+      <tr><td class="label">Data badania:</td><td><input type="date" id="examDate"></td></tr>
+      <tr><td class="label">Frakcja wyrzutowa (%):</td><td><input type="number" id="ef"></td></tr>
+      <tr><td class="label">Zastawka mitralna:</td><td><input type="text" id="valveMitral"></td></tr>
+      <tr><td class="label">Zastawka aortalna:</td><td><input type="text" id="valveAortic"></td></tr>
+      <tr><td class="label">Średnica lewej komory (mm):</td><td><input type="number" id="lvDiameter"></td></tr>
+      <tr><td class="label">Komentarz:</td><td><textarea id="comments" rows="4"></textarea></td></tr>
+    </table>
+    <button type="button" onclick="generateDocx()" class="btn">Generuj raport (DOCX)</button>
+  </form>
+  <script src="https://cdn.jsdelivr.net/npm/docx@9.5.1/dist/index.iife.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+  <script>
+    async function generateDocx() {
+      const { Document, Packer, Paragraph, Table, TableRow, TableCell, HeadingLevel } = docx;
+      const patientName = document.getElementById("patientName").value.trim();
+      const examDate = document.getElementById("examDate").value;
+      const ef = document.getElementById("ef").value;
+      const valveMitral = document.getElementById("valveMitral").value.trim();
+      const valveAortic = document.getElementById("valveAortic").value.trim();
+      const lvDiameter = document.getElementById("lvDiameter").value;
+      const comments = document.getElementById("comments").value.trim();
+      const doc = new Document({
+        sections: [{
+          properties: { page: { margin: { top: 1000, right: 1000, bottom: 1000, left: 1000 } } },
+          children: [
+            new Paragraph({ text: "Badanie echokardiograficzne", heading: HeadingLevel.HEADING_1 }),
+            patientName ? new Paragraph({ text: `Pacjent: ${patientName}` }) : null,
+            examDate ? new Paragraph({ text: `Data badania: ${examDate}` }) : null,
+            new Table({
+              rows: [
+                ...(ef       ? [ new TableRow({ children: [ new TableCell({ children: [ new Paragraph("Frakcja wyrzutowa (%)") ] }), new TableCell({ children: [ new Paragraph(ef) ] }) ] }) ] : []),
+                ...(lvDiameter? [ new TableRow({ children: [ new TableCell({ children: [ new Paragraph("Średnica LV (mm)") ] }), new TableCell({ children: [ new Paragraph(lvDiameter) ] }) ] }) ] : []),
+                ...(valveMitral? [ new TableRow({ children: [ new TableCell({ children: [ new Paragraph("Zastawka mitralna") ] }), new TableCell({ children: [ new Paragraph(valveMitral) ] }) ] }) ] : []),
+                ...(valveAortic? [ new TableRow({ children: [ new TableCell({ children: [ new Paragraph("Zastawka aortalna") ] }), new TableCell({ children: [ new Paragraph(valveAortic) ] }) ] }) ] : [])
+              ],
+              width: { size: 100, type: "pct" }
+            }),
+            comments ? new Paragraph({ text: "Uwagi:", heading: HeadingLevel.HEADING_2 }) : null,
+            comments ? new Paragraph({ text: comments }) : null
+          ].filter(Boolean)
+        }]
+      });
+      const blob = await Packer.toBlob(doc);
+      saveAs(blob, "Echo_report.docx");
+    }
+  </script>
+</body>
+</html>
