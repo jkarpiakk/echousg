@@ -174,20 +174,14 @@
   </div>
   <script>
     function generateReport() {
-      const fields = [
-        "date","patient","LV","LA","LAA","RV","RAA","IVS","PW",
-        "Ao_op","Ao_asc","PA","EF","regional","mitral_EA","MR_VC",
-        "PISA","mitral_LAA","jet_area","MS_MxPG","MS_MnPG","MS_Vmax",
-        "SPAP","AR_VC","wave_width","LVOT","PHT","AS_MxPG","AS_MnPG",
-        "AS_Vmax","AVA","tri_VC","tri_jet","tri_MxPG","TAPSE","tri_SPAP",
-        "AcT","Vmax_sys","Vmax_dia","RVSP","osierdzie","opis","wnioski"
-      ];
-      let htmlBody = '<h1>Badanie Echokardiograficzne</h1>';
-      fields.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && el.value) {
-          const label = document.querySelector(`label[for="${id}"]`) || el.parentElement;
-          htmlBody += `<p><strong>${label.textContent.trim()}</strong> ${el.value}</p>`;
+      const container = document.querySelector('.container');
+      const pre = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Badanie Echokardiograficzne</title></head><body>';
+      const post = '</body></html>';
+      const content = container.innerHTML;
+      const blob = HTMLDocx.asBlob(pre + content + post);
+      saveAs(blob, 'raport.docx');
+    }
+  <"}]}/strong> ${el.value}</p>`;
         }
       });
       const fullHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>' +
