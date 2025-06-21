@@ -200,7 +200,7 @@
       });
       const report = document.getElementById("report");
       report.innerHTML = html;
-      const converted = htmlDocx.asBlob(report.innerHTML);
+      const converted = HTMLDocx.asBlob(report.innerHTML);
       saveAs(converted, "raport.docx");
     }
   </script>
