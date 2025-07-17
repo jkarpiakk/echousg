@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.js"></script> <!-- Zaktualizowana wersja docx.js -->
+    <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 <body class="bg-light">
@@ -18,7 +18,6 @@
             </div>
             <div class="card-body">
                 <form id="echoForm" class="accordion" novalidate>
-                    <!-- Data badania -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dataPanel"><i class="fas fa-calendar-alt me-2"></i>Data badania</button>
@@ -43,7 +42,6 @@
                         </div>
                     </div>
 
-                    <!-- Pacjent -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pacjentPanel"><i class="fas fa-user me-2"></i>Pacjent</button>
@@ -55,7 +53,6 @@
                         </div>
                     </div>
 
-                    <!-- Wymiary jam serca -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#wymiaryPanel"><i class="fas fa-ruler me-2"></i>Wymiary jam serca</button>
@@ -64,16 +61,16 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>LV (norma: 42-58/26-32 mm)</label>
+                                        <label title="Norma: 42-58/26-32 mm">LV</label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="lv1" placeholder="__" title="Systolic/Diastolic">
+                                            <input type="number" class="form-control" id="lv1" placeholder="__">
                                             <span class="input-group-text">/</span>
                                             <input type="number" class="form-control" id="lv2" placeholder="__">
                                             <span class="input-group-text">mm</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label>LA (norma: <38 mm)</label>
+                                        <label title="Norma: <38 mm">LA</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="la" placeholder="__">
                                             <span class="input-group-text">mm</span>
@@ -82,14 +79,14 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-md-6">
-                                        <label>LAA (norma: <20 cm²)</label>
+                                        <label title="Norma: <20 cm²">LAA</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="laa" placeholder="__">
                                             <span class="input-group-text">cm²</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label>RV (norma: <41 mm)</label>
+                                        <label title="Norma: <41 mm">RV</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="rv" placeholder="__">
                                             <span class="input-group-text">mm</span>
@@ -98,7 +95,7 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-md-6">
-                                        <label>RAA (norma: <18 cm²)</label>
+                                        <label title="Norma: <18 cm²">RAA</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="raa" placeholder="__">
                                             <span class="input-group-text">cm²</span>
@@ -109,7 +106,6 @@
                         </div>
                     </div>
 
-                    <!-- Grubość przegrody -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gruboscPanel"><i class="fas fa-expand-arrows-alt me-2"></i>Grubość przegrody międzykomorowej oraz tylnej ściany LV</button>
@@ -118,7 +114,7 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>IVS (norma: 6-10 mm)</label>
+                                        <label title="Norma: 6-10 mm">IVS</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="ivs1" placeholder="__">
                                             <span class="input-group-text">/</span>
@@ -127,7 +123,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label>PW (norma: 6-10 mm)</label>
+                                        <label title="Norma: 6-10 mm">PW</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="pw1" placeholder="__">
                                             <span class="input-group-text">/</span>
@@ -140,7 +136,6 @@
                         </div>
                     </div>
 
-                    <!-- Szerokość pni naczyniowych -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#szerokoscPanel"><i class="fas fa-arrows-alt-h me-2"></i>Szerokość pni naczyniowych</button>
@@ -149,21 +144,21 @@
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label>Ao op (norma: 20-30 mm)</label>
+                                        <label title="Norma: 20-30 mm">Ao op</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="aoOp" placeholder="__">
                                             <span class="input-group-text">mm</span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label>Ao asc (norma: 22-36 mm)</label>
+                                        <label title="Norma: 22-36 mm">Ao asc</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="aoAsc" placeholder="__">
                                             <span class="input-group-text">mm</span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label>PA (norma: <25 mm)</label>
+                                        <label title="Norma: <25 mm">PA</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="pa" placeholder="__">
                                             <span class="input-group-text">mm</span>
@@ -174,7 +169,6 @@
                         </div>
                     </div>
 
-                    <!-- Frakcja wyrzutowa -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#efPanel"><i class="fas fa-percentage me-2"></i>Frakcja wyrzutowa lewej komory (EF)</button>
@@ -189,7 +183,6 @@
                         </div>
                     </div>
 
-                    <!-- Regionalne zaburzenia -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#zaburzeniaPanel"><i class="fas fa-exclamation-triangle me-2"></i>Regionalne zaburzenia kurczliwości mięśnia LV</button>
@@ -209,20 +202,18 @@
                         </div>
                     </div>
 
-                    <!-- Zastawki serca -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#zastawkiPanel"><i class="fas fa-cogs me-2"></i>Struktura i funkcja zastawek serca</button>
                         </h2>
                         <div id="zastawkiPanel" class="accordion-collapse collapse">
                             <div class="accordion-body">
-                                <!-- Zastawka mitralna -->
                                 <h5>Zastawka mitralna</h5>
                                 <textarea class="form-control mb-2" id="mitralnaEA" placeholder="E/A: (norma: 0.8-2.0)..." rows="2"></textarea>
                                 <h6>MR (niedomykalność)</h6>
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label>VC (norma: <3 mm)</label>
+                                        <label title="Norma: <3 mm">VC</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="mrVc" placeholder="__">
                                             <span class="input-group-text">mm</span>
@@ -253,7 +244,7 @@
                                 <h6>MS (zwężenie)</h6>
                                 <div class="row mt-2">
                                     <div class="col-md-3">
-                                        <label>MxPG (norma: <5 mmHg)</label>
+                                        <label title="Norma: <5 mmHg">MxPG</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="msMxPg" placeholder="__">
                                             <span class="input-group-text">mmHg</span>
@@ -274,7 +265,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label>SPAP (norma: <30 mmHg)</label>
+                                        <label title="Norma: <30 mmHg">SPAP</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="msSpap" placeholder="__">
                                             <span class="input-group-text">mmHg</span>
@@ -282,13 +273,12 @@
                                     </div>
                                 </div>
 
-                                <!-- Zastawka aortalna -->
                                 <h5 class="mt-4">Zastawka aortalna</h5>
                                 <textarea class="form-control mb-2" id="aortalnaOpis" placeholder="Opis struktury..." rows="2"></textarea>
                                 <h6>AR (niedomykalność)</h6>
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label>VC (norma: <3 mm)</label>
+                                        <label title="Norma: <3 mm">VC</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="arVc" placeholder="__">
                                             <span class="input-group-text">mm</span>
@@ -309,46 +299,45 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label>PHT (norma: >500 ms)</label>
+                                        <label title="Norma: >500 ms">PHT</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="arPht" placeholder="__">
-                                            <span class="input-group-text">ms</span> <!-- Poprawione na ms, bo w oryginale m/s było błędne -->
+                                            <span class="input-group-text">ms</span>
                                         </div>
                                     </div>
                                 </div>
                                 <h6>AS (zwężenie)</h6>
                                 <div class="row mt-2">
                                     <div class="col-md-3">
-                                        <label>MxPG (norma: <40 mmHg)</label>
+                                        <label title="Norma: <40 mmHg">MxPG</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="asMxPg" placeholder="__">
                                             <span class="input-group-text">mmHg</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label>MnPG (norma: <25 mmHg)</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="asMnPg" placeholder="__">
-                                                <span class="input-group-text">mmHg</span>
-                                            </div>
+                                        <label title="Norma: <25 mmHg">MnPG</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="asMnPg" placeholder="__">
+                                            <span class="input-group-text">mmHg</span>
                                         </div>
+                                    </div>
                                     <div class="col-md-3">
-                                        <label>Vmax (norma: <4 m/s)</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="asVmax" placeholder="__">
-                                                <span class="input-group-text">m/s</span>
-                                            </div>
+                                        <label title="Norma: <4 m/s">Vmax</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="asVmax" placeholder="__">
+                                            <span class="input-group-text">m/s</span>
                                         </div>
+                                    </div>
                                     <div class="col-md-3">
-                                        <label>AVA (norma: >1 cm²)</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="asAva" placeholder="__">
-                                                <span class="input-group-text">cm²</span>
-                                            </div>
+                                        <label title="Norma: >1 cm²">AVA</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="asAva" placeholder="__">
+                                            <span class="input-group-text">cm²</span>
                                         </div>
+                                    </div>
                                 </div>
 
-                                <!-- Zastawka trójdzielna -->
                                 <h5 class="mt-4">Zastawka trójdzielna</h5>
                                 <textarea class="form-control mb-2" id="trojdzielnaOpis" placeholder="Opis..." rows="2"></textarea>
                                 <div class="row">
@@ -363,19 +352,18 @@
                                         <label>Jet area</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="trJetArea" placeholder="__">
-                                                <span class="input-group-text">cm²</span>
-                                            </div>
+                                            <span class="input-group-text">cm²</span>
                                         </div>
-                                    <div>
+                                    </div>
                                     <div class="col-md-3">
                                         <label>MxPG</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="trMxPg" placeholder="__">
-                                                <span class="input-group-text">mmHg</span>
-                                            </div>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="trMxPg" placeholder="__">
+                                            <span class="input-group-text">mmHg</span>
                                         </div>
+                                    </div>
                                     <div class="col-md-3">
-                                        <label>SPAP (norma: <30 mmHg)</label>
+                                        <label title="Norma: <30 mmHg">SPAP</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="trSpap" placeholder="__">
                                             <span class="input-group-text">mmHg</span>
@@ -384,61 +372,58 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-md-6">
-                                        <label>TAPSE (norma: >17 mm)</label> 
-                                            <div class="form-control" id="trTapse" placeholder="..." type="text" input>
+                                        <label title="Norma: >17 mm">TAPSE</label>
+                                        <input type="text" class="form-control" id="trTapse" placeholder="...">
                                     </div>
                                 </div>
 
-                                <!-- Zastawka pnia płucnego -->
                                 <h5 class="mt-4">Zastawka pnia płucnego</h5>
                                 <textarea class="form-control mb-2" id="plucnegoOpis" placeholder="Opis..." rows="2"></textarea>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label>AcT</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="ppAct" placeholder="__">
-                                                <span class="input-group-text">ms</span> <!-- Poprawione na ms -->
-                                            </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>AcT</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="ppAct" placeholder="__">
+                                            <span class="input-group-text">ms</span>
                                         </div>
-                                        <div class="col-md-3">
-                                            <label>Vmax (systole)</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="ppVmaxSyst" placeholder="__">
-                                                <span class="input-group-text">m/s</span>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Vmax (systole)</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="ppVmaxSyst" placeholder="__">
+                                            <span class="input-group-text">m/s</span>
                                         </div>
-                                        <div class="col-md-3">
-                                            <label>Vmax (diastole)</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="ppVmaxDiast" placeholder="__">
-                                                <span class="input-group-text">m/s</span>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Vmax (diastole)</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="ppVmaxDiast" placeholder="__">
+                                            <span class="input-group-text">m/s</span>
                                         </div>
-                                        <div class="col-md-3">
-                                            <label>RVSP</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" id="ppRvsp" placeholder="__">
-                                                <span class="input-group-text">mmHg</span>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>RVSP</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="ppRvsp" placeholder="__">
+                                            <span class="input-group-text">mmHg</span>
                                         </div>
-</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Osierdzie -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#osierdziePanel"><i class="fas fa-shield-alt me-2"></i>Osierdzie</button>
                         </h2>
                         <div id="osierdziePanel" class="accordion-collapse collapse">
                             <div class="accordion-body">
-                                <input type="text" class="form-control" id="bez płynu" placeholder="osierdzie" value="bez płynu">
+                                <input type="text" class="form-control" id="osierdzie" value="bez płynu" placeholder="bez płynu">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Opis dodatkowy -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#opisDodatkowyPanel"><i class="fas fa-file-alt me-2"></i>Opis dodatkowy</button>
@@ -450,10 +435,9 @@
                         </div>
                     </div>
 
-                    <!-- Wnioski -->
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle" = "collapse" data-bs-target="#wnioskiPanel"><i class="fas fa-check-circle me-2"></i>Wnioski</button>
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#wnioskiPanel"><i class="fas fa-check-circle me-2"></i>Wnioski</button>
                         </h2>
                         <div id="wnioskiPanel" class="accordion-collapse collapse">
                             <div class="accordion-body">
@@ -461,16 +445,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-            <div class="card-footer text-center mt-4">
+            <div class="card-footer text-center">
                 <button class="btn btn-outline-danger me-2" onclick="resetForm()">Wyczyść formularz</button>
                 <button class="btn btn-outline-secondary me-2" onclick="showPreview()">Podgląd raportu</button>
                 <button class="btn btn-primary" onclick="generateReport()">Generuj raport DOCX</button>
             </div>
         </div>
 
-        <div class="modal fade" id="previewModal" aria-hidden="true">
+        <div class="modal fade" id="previewModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -478,225 +462,263 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <pre id="previewText"></pre>
+                        <pre id="previewText" class="p-3 bg-light border"></pre>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            const { Document, Packer, Paragraph, HeadingLevel, TextRun } = docx; // Poprawny import
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const { Document, Packer, Paragraph, TextRun, HeadingLevel } = docx;
 
-            function getValue(id) {
-                const elem = document.getElementById(id);
-                return elem ? elem.value.trim() : '';
+        function getValue(id) {
+            const elem = document.getElementById(id);
+            return elem ? elem.value.trim() : '';
+        }
+
+        function isEmpty(val) {
+            return val === '' || val === '__';
+        }
+
+        function buildReportText() {
+            let report = '';
+            report += `BADANIE ECHOKARDIOGRAFICZNE (${getValue('dataDay') || '__'} . ${getValue('dataMonth') || '__'} . ${getValue('dataYear') || '_______'} r.)\n\n`;
+            report += `Pacjent: ${getValue('pacjent') || '...'}\n\n`;
+
+            let wymiary = 'Wymiary jam serca: ';
+            let lv = isEmpty(getValue('lv1')) && isEmpty(getValue('lv2')) ? '' : `LV ${getValue('lv1') || '__'} / ${getValue('lv2') || '__'} mm`;
+            let la = isEmpty(getValue('la')) ? '' : `LA ${getValue('la')} mm`;
+            let laa = isEmpty(getValue('laa')) ? '' : `LAA: ${getValue('laa')} cm²`;
+            let rv = isEmpty(getValue('rv')) ? '' : `RV ${getValue('rv')} mm`;
+            let raa = isEmpty(getValue('raa')) ? '' : `RAA: ${getValue('raa')} cm²`;
+            let wymiaryParts = [lv, la, laa, rv, raa].filter(part => part);
+            if (wymiaryParts.length > 0) report += wymiary + wymiaryParts.join(', ') + '\n\n';
+
+            let grubosc = 'Grubość przegrody międzykomorowej oraz tylnej ściany LV: ';
+            let ivs = isEmpty(getValue('ivs1')) && isEmpty(getValue('ivs2')) ? '' : `IVS ${getValue('ivs1') || '__'} / ${getValue('ivs2') || '__'} mm`;
+            let pw = isEmpty(getValue('pw1')) && isEmpty(getValue('pw2')) ? '' : `PW ${getValue('pw1') || '__'} / ${getValue('pw2') || '__'} mm`;
+            let gruboscParts = [ivs, pw].filter(part => part);
+            if (gruboscParts.length > 0) report += grubosc + gruboscParts.join(', ') + '\n\n';
+
+            let szerokosc = 'Szerokość pni naczyniowych: ';
+            let aoOp = isEmpty(getValue('aoOp')) ? '' : `Ao op: ${getValue('aoOp')} mm`;
+            let aoAsc = isEmpty(getValue('aoAsc')) ? '' : `Ao asc: ${getValue('aoAsc')} mm`;
+            let pa = isEmpty(getValue('pa')) ? '' : `PA: ${getValue('pa')} mm`;
+            let szerokoscParts = [aoOp, aoAsc, pa].filter(part => part);
+            if (szerokoscParts.length > 0) report += szerokosc + szerokoscParts.join(', ') + '\n\n';
+
+            report += `Frakcja wyrzutowa lewej komory EF: ${getValue('ef') || '________'} %\n\n`;
+
+            report += `Regionalne zaburzenia kurczliwości mięśnia L.V.: ${document.querySelector('input[name="zaburzenia"]:checked').value}\n`;
+            let zaburzeniaOpis = getValue('zaburzeniaOpis');
+            if (!isEmpty(zaburzeniaOpis)) report += zaburzeniaOpis + '\n\n';
+
+            report += 'Struktura i funkcja zastawek serca:\n\n';
+
+            report += `Zastawka mitralna: E/A: ${getValue('mitralnaEA') || '...'}\n`;
+            let mr = 'MR: ';
+            let mrParts = [];
+            if (!isEmpty(getValue('mrVc'))) mrParts.push(`VC: ${getValue('mrVc')} mm`);
+            if (!isEmpty(getValue('mrPisa'))) mrParts.push(`PISA: ${getValue('mrPisa')} mm`);
+            if (!isEmpty(getValue('mrLaa'))) mrParts.push(`LAA: ${getValue('mrLaa')} cm²`);
+            if (!isEmpty(getValue('mrJetArea'))) mrParts.push(`jet area: ${getValue('mrJetArea')} cm²`);
+            if (mrParts.length > 0) report += mr + mrParts.join(', ') + '\n';
+
+            let ms = 'MS: ';
+            let msParts = [];
+            if (!isEmpty(getValue('msMxPg'))) msParts.push(`MxPG: ${getValue('msMxPg')} mmHg`);
+            if (!isEmpty(getValue('msMnPg'))) msParts.push(`MnPG: ${getValue('msMnPg')} mmHg`);
+            if (!isEmpty(getValue('msVmax'))) msParts.push(`Vmax: ${getValue('msVmax')} m/s`);
+            if (!isEmpty(getValue('msSpap'))) msParts.push(`SPAP: ${getValue('msSpap')} mmHg`);
+            if (msParts.length > 0) report += ms + msParts.join(', ') + '\n\n';
+
+            report += `Zastawka aortalna: ${getValue('aortalnaOpis') || '...'}\n`;
+            let ar = 'AR: ';
+            let arParts = [];
+            if (!isEmpty(getValue('arVc'))) arParts.push(`VC: ${getValue('arVc')} mm`);
+            if (!isEmpty(getValue('arSzerokosc'))) arParts.push(`szerokość fali: ${getValue('arSzerokosc')} mm`);
+            if (!isEmpty(getValue('arLvot'))) arParts.push(`LVOT: ${getValue('arLvot')} mm`);
+            if (!isEmpty(getValue('arPht'))) arParts.push(`PHT: ${getValue('arPht')} ms`);
+            if (arParts.length > 0) report += ar + arParts.join(', ') + '\n';
+
+            let as_ = 'AS: ';
+            let asParts = [];
+            if (!isEmpty(getValue('asMxPg'))) asParts.push(`MxPG: ${getValue('asMxPg')} mmHg`);
+            if (!isEmpty(getValue('asMnPg'))) asParts.push(`MnPG: ${getValue('asMnPg')} mmHg`);
+            if (!isEmpty(getValue('asVmax'))) asParts.push(`Vmax: ${getValue('asVmax')} m/s`);
+            if (!isEmpty(getValue('asAva'))) asParts.push(`AVA: ${getValue('asAva')} cm²`);
+            if (asParts.length > 0) report += as_ + asParts.join(', ') + '\n\n';
+
+            report += `Zastawka trójdzielna: ${getValue('trojdzielnaOpis') || '...'}\n`;
+            let trParts = [];
+            if (!isEmpty(getValue('trVc'))) trParts.push(`VC: ${getValue('trVc')} mm`);
+            if (!isEmpty(getValue('trJetArea'))) trParts.push(`jet area: ${getValue('trJetArea')} cm²`);
+            if (!isEmpty(getValue('trMxPg'))) trParts.push(`MxPG: ${getValue('trMxPg')} mmHg`);
+            if (!isEmpty(getValue('trSpap'))) trParts.push(`SPAP: ${getValue('trSpap')} mmHg`);
+            let tr = trParts.join(', ');
+            if (!isEmpty(getValue('trTapse'))) tr += ` TAPSE: ${getValue('trTapse')}`;
+            if (tr) report += tr + '\n\n';
+
+            report += `Zastawka pnia płucnego: ${getValue('plucnegoOpis') || '...'}\n`;
+            let ppParts = [];
+            if (!isEmpty(getValue('ppAct'))) ppParts.push(`AcT: ${getValue('ppAct')} ms`);
+            if (!isEmpty(getValue('ppVmaxSyst'))) ppParts.push(`Vmax(systole): ${getValue('ppVmaxSyst')} m/s`);
+            if (!isEmpty(getValue('ppVmaxDiast'))) ppParts.push(`Vmax(diastole): ${getValue('ppVmaxDiast')} m/s`);
+            if (!isEmpty(getValue('ppRvsp'))) ppParts.push(`RVSP: ${getValue('ppRvsp')} mmHg`);
+            if (ppParts.length > 0) report += ppParts.join(', ') + '\n\n';
+
+            report += `Osierdzie: ${getValue('osierdzie') || 'bez płynu'}\n\n`;
+
+            let opisDodatkowy = getValue('opisDodatkowy');
+            if (!isEmpty(opisDodatkowy)) report += 'Opis dodatkowy:\n' + opisDodatkowy + '\n\n';
+
+            let wnioski = getValue('wnioski');
+            if (!isEmpty(wnioski)) report += 'Wnioski:\n' + wnioski + '\n';
+
+            return report;
+        }
+
+        function showPreview() {
+            document.getElementById('previewText').textContent = buildReportText();
+            const modal = new bootstrap.Modal(document.getElementById('previewModal'));
+            modal.show();
+        }
+
+        function resetForm() {
+            document.getElementById('echoForm').reset();
+        }
+
+        function addStyledParagraph(sectionChildren, text, options = {}) {
+            if (!isEmpty(text)) {
+                sectionChildren.push(new Paragraph({
+                    children: [new TextRun({
+                        text,
+                        bold: options.bold || false,
+                        italics: options.italics || false,
+                        size: 24, // 12pt
+                    })],
+                    heading: options.heading,
+                    spacing: { after: options.spacing || 200 },
+                }));
+            }
+        }
+
+        function generateReport() {
+            const doc = new Document({
+                sections: [{
+                    properties: {},
+                    children: [],
+                }],
+            });
+            const sectionChildren = doc.sections[0].children;
+
+            addStyledParagraph(sectionChildren, 'BADANIE ECHOKARDIOGRAFICZNE', { heading: HeadingLevel.HEADING_1, bold: true });
+            addStyledParagraph(sectionChildren, `(${getValue('dataDay') || '__'} . ${getValue('dataMonth') || '__'} . ${getValue('dataYear') || '_______'} r.)`, { spacing: 0 });
+
+            addStyledParagraph(sectionChildren, `Pacjent: ${getValue('pacjent') || 'Brak danych'}`, { bold: true });
+
+            let wymiary = 'Wymiary jam serca: ';
+            let lv = isEmpty(getValue('lv1')) && isEmpty(getValue('lv2')) ? '' : `LV ${getValue('lv1') || '__'} / ${getValue('lv2') || '__'} mm`;
+            let la = isEmpty(getValue('la')) ? '' : `LA ${getValue('la')} mm`;
+            let laa = isEmpty(getValue('laa')) ? '' : `LAA: ${getValue('laa')} cm²`;
+            let rv = isEmpty(getValue('rv')) ? '' : `RV ${getValue('rv')} mm`;
+            let raa = isEmpty(getValue('raa')) ? '' : `RAA: ${getValue('raa')} cm²`;
+            let wymiaryParts = [lv, la, laa, rv, raa].filter(part => part);
+            if (wymiaryParts.length > 0) addStyledParagraph(sectionChildren, wymiary + wymiaryParts.join(', '));
+
+            let grubosc = 'Grubość przegrody międzykomorowej oraz tylnej ściany LV: ';
+            let ivs = isEmpty(getValue('ivs1')) && isEmpty(getValue('ivs2')) ? '' : `IVS ${getValue('ivs1') || '__'} / ${getValue('ivs2') || '__'} mm`;
+            let pw = isEmpty(getValue('pw1')) && isEmpty(getValue('pw2')) ? '' : `PW ${getValue('pw1') || '__'} / ${getValue('pw2') || '__'} mm`;
+            let gruboscParts = [ivs, pw].filter(part => part);
+            if (gruboscParts.length > 0) addStyledParagraph(sectionChildren, grubosc + gruboscParts.join(', '));
+
+            let szerokosc = 'Szerokość pni naczyniowych: ';
+            let aoOp = isEmpty(getValue('aoOp')) ? '' : `Ao op: ${getValue('aoOp')} mm`;
+            let aoAsc = isEmpty(getValue('aoAsc')) ? '' : `Ao asc: ${getValue('aoAsc')} mm`;
+            let pa = isEmpty(getValue('pa')) ? '' : `PA: ${getValue('pa')} mm`;
+            let szerokoscParts = [aoOp, aoAsc, pa].filter(part => part);
+            if (szerokoscParts.length > 0) addStyledParagraph(sectionChildren, szerokosc + szerokoscParts.join(', '));
+
+            addStyledParagraph(sectionChildren, `Frakcja wyrzutowa lewej komory EF: ${getValue('ef') || '________'} %`);
+
+            addStyledParagraph(sectionChildren, `Regionalne zaburzenia kurczliwości mięśnia L.V.: ${document.querySelector('input[name="zaburzenia"]:checked').value}`);
+            let zaburzeniaOpis = getValue('zaburzeniaOpis');
+            if (!isEmpty(zaburzeniaOpis)) addStyledParagraph(sectionChildren, zaburzeniaOpis, { italics: true });
+
+            addStyledParagraph(sectionChildren, 'Struktura i funkcja zastawek serca:', { heading: HeadingLevel.HEADING_2 });
+
+            addStyledParagraph(sectionChildren, `Zastawka mitralna: E/A: ${getValue('mitralnaEA') || '...'}`);
+            let mr = 'MR: ';
+            let mrParts = [];
+            if (!isEmpty(getValue('mrVc'))) mrParts.push(`VC: ${getValue('mrVc')} mm`);
+            if (!isEmpty(getValue('mrPisa'))) mrParts.push(`PISA: ${getValue('mrPisa')} mm`);
+            if (!isEmpty(getValue('mrLaa'))) mrParts.push(`LAA: ${getValue('mrLaa')} cm²`);
+            if (!isEmpty(getValue('mrJetArea'))) mrParts.push(`jet area: ${getValue('mrJetArea')} cm²`);
+            if (mrParts.length > 0) addStyledParagraph(sectionChildren, mr + mrParts.join(', '));
+
+            let ms = 'MS: ';
+            let msParts = [];
+            if (!isEmpty(getValue('msMxPg'))) msParts.push(`MxPG: ${getValue('msMxPg')} mmHg`);
+            if (!isEmpty(getValue('msMnPg'))) msParts.push(`MnPG: ${getValue('msMnPg')} mmHg`);
+            if (!isEmpty(getValue('msVmax'))) msParts.push(`Vmax: ${getValue('msVmax')} m/s`);
+            if (!isEmpty(getValue('msSpap'))) msParts.push(`SPAP: ${getValue('msSpap')} mmHg`);
+            if (msParts.length > 0) addStyledParagraph(sectionChildren, ms + msParts.join(', '));
+
+            addStyledParagraph(sectionChildren, `Zastawka aortalna: ${getValue('aortalnaOpis') || '...'}`);
+            let ar = 'AR: ';
+            let arParts = [];
+            if (!isEmpty(getValue('arVc'))) arParts.push(`VC: ${getValue('arVc')} mm`);
+            if (!isEmpty(getValue('arSzerokosc'))) arParts.push(`szerokość fali: ${getValue('arSzerokosc')} mm`);
+            if (!isEmpty(getValue('arLvot'))) arParts.push(`LVOT: ${getValue('arLvot')} mm`);
+            if (!isEmpty(getValue('arPht'))) arParts.push(`PHT: ${getValue('arPht')} ms`);
+            if (arParts.length > 0) addStyledParagraph(sectionChildren, ar + arParts.join(', '));
+
+            let as_ = 'AS: ';
+            let asParts = [];
+            if (!isEmpty(getValue('asMxPg'))) asParts.push(`MxPG: ${getValue('asMxPg')} mmHg`);
+            if (!isEmpty(getValue('asMnPg'))) asParts.push(`MnPG: ${getValue('asMnPg')} mmHg`);
+            if (!isEmpty(getValue('asVmax'))) asParts.push(`Vmax: ${getValue('asVmax')} m/s`);
+            if (!isEmpty(getValue('asAva'))) asParts.push(`AVA: ${getValue('asAva')} cm²`);
+            if (asParts.length > 0) addStyledParagraph(sectionChildren, as_ + asParts.join(', '));
+
+            addStyledParagraph(sectionChildren, `Zastawka trójdzielna: ${getValue('trojdzielnaOpis') || '...'}`);
+            let trParts = [];
+            if (!isEmpty(getValue('trVc'))) trParts.push(`VC: ${getValue('trVc')} mm`);
+            if (!isEmpty(getValue('trJetArea'))) trParts.push(`jet area: ${getValue('trJetArea')} cm²`);
+            if (!isEmpty(getValue('trMxPg'))) trParts.push(`MxPG: ${getValue('trMxPg')} mmHg`);
+            if (!isEmpty(getValue('trSpap'))) trParts.push(`SPAP: ${getValue('trSpap')} mmHg`);
+            let tr = trParts.join(', ');
+            if (!isEmpty(getValue('trTapse'))) tr += ` TAPSE: ${getValue('trTapse')}`;
+            if (tr) addStyledParagraph(sectionChildren, tr);
+
+            addStyledParagraph(sectionChildren, `Zastawka pnia płucnego: ${getValue('plucnegoOpis') || '...'}`);
+            let ppParts = [];
+            if (!isEmpty(getValue('ppAct'))) ppParts.push(`AcT: ${getValue('ppAct')} ms`);
+            if (!isEmpty(getValue('ppVmaxSyst'))) ppParts.push(`Vmax(systole): ${getValue('ppVmaxSyst')} m/s`);
+            if (!isEmpty(getValue('ppVmaxDiast'))) ppParts.push(`Vmax(diastole): ${getValue('ppVmaxDiast')} m/s`);
+            if (!isEmpty(getValue('ppRvsp'))) ppParts.push(`RVSP: ${getValue('ppRvsp')} mmHg`);
+            if (ppParts.length > 0) addStyledParagraph(sectionChildren, ppParts.join(', '));
+
+            addStyledParagraph(sectionChildren, `Osierdzie: ${getValue('osierdzie') || 'bez płynu'}`);
+
+            let opisDodatkowy = getValue('opisDodatkowy');
+            if (!isEmpty(opisDodatkowy)) {
+                addStyledParagraph(sectionChildren, 'Opis dodatkowy:', { bold: true });
+                addStyledParagraph(sectionChildren, opisDodatkowy);
             }
 
-            function isEmpty(val) {
-                return val === '' || val === '__' || val === '0' && !Number(val); // Ulepszone sprawdzanie
+            let wnioski = getValue('wnioski');
+            if (!isEmpty(wnioski)) {
+                addStyledParagraph(sectionChildren, 'Wnioski:', { heading: HeadingLevel.HEADING_2 });
+                addStyledParagraph(sectionChildren, wnioski);
             }
 
-            function addStyledParagraph(sectionChildren, text, options = {}) {
-                if (!isEmpty(text)) {
-                    sectionChildren.push(new Paragraph({
-                        ...options,
-                        children: [new TextRun({
-                            text,
-                            bold: options.bold,
-                            italics: options.italics,
-                            size: 24, // 12pt
-                            font: 'Times New Roman'
-                        })],
-                        heading: options.heading,
-                        spacing: { after: options.spacing || 200 },
-                    }));
-                }
-            }
-
-            function generateReport() {
-                document.getElementById('echoForm').reset();
-            }
-
-            function showPreview() {
-                const preview = buildReportText(); // Funkcja budująca tekst podglądu
-                document.getElementById('previewText').textContent = preview;
-                const modal = new bootstrap.Modal(document.getElementById('previewModal'));
-                modal.show();
-            }
-
-            function buildReportText() {
-                // Buduje tekst do podglądu, podobny do DOCX
-                let report = '';
-                // Podobna logika jak w generateReportDocx, ale jako string z \n
-                report += `BADANIE ECHOKARDIOGRAFICZNE (${getValue('dataDay') || '__'} . ${getValue('dataMonth') || '__'} . ${getValue('dataYear') || '_______'} r.)\n\n`;
-                report += `Pacjent: ${getValue('pacjent') || '...'}\n\n`;
-                // ... dodaj resztę sekcji podobnie
-                // (Pomijam pełny kod dla brevity, ale dodaj wszystkie sekcje jak poniżej w generateReportDocx)
-                return report;
-            }
-
-            function generateReportDocx() {
-                const doc = new Document({
-                    styles: {
-                        default: {
-                            document: {
-                                run: {
-                                    font: 'Times New Roman',
-                                    size: 24, // 12pt
-                                },
-                                paragraph: {
-                                    spacing: { line: 276 },
-                                }
-                            },
-                        },
-                    sections: [{
-                        properties: {},
-                        children: [],
-                    }],
-                });
-                const sectionChildren = doc.sections[0].children;
-
-                // Tytuł
-                addStyledParagraph(sectionChildren, 'BADANIE ECHOKARDIOGRAFICZNE', { heading: HeadingLevel.HEADING_1, bold: true });
-                addStyledParagraph(sectionChildren, `(${getValue('dataDay') || '__'} . ${getValue('dataMonth') || '__'} . ${getValue('dataYear') || '_______'} r.)`, { spacing: 0 });
-
-                // Pacjent
-                addStyledParagraph(sectionChildren, '');
-                addStyledParagraph(sectionChildren, `Pacjent: ${getValue('pacjent') || 'Brak danych'}`, { bold: true });
-
-                // Wymiary jam serca
-                let wymiary = 'Wymiary jam serca: ';
-                let lv = isEmpty(getValue('lv1')) && isEmpty(getValue('lv2')) ? '' : `LV ${getValue('lv1') || '__'} / ${getValue('lv2') || '__'} mm`;
-                let la = isEmpty(getValue('la')) ? '' : `LA ${getValue('la')} mm`;
-                let laa = isEmpty(getValue('laa')) ? '' : `LAA: ${getValue('laa')} cm²`;
-                let rv = isEmpty(getValue('rv')) ? '' : `RV ${getValue('rv')} mm`;
-                let raa = isEmpty(getValue('raa')) ? '' : `RAA: ${getValue('raa')} cm²`;
-                let wymiaryParts = [lv, la, laa, rv, raa].filter(part => part);
-                if (wymiaryParts.length > 0) {
-                    wymiary += wymiaryParts.join(', ');
-                    addStyledParagraph(sectionChildren, wymiary);
-                }
-
-                // Grubość
-                let grubosc = 'Grubość przegrody międzykomorowej oraz tylnej ściany LV: ';
-                let ivs = isEmpty(getValue('ivs1')) && isEmpty(getValue('ivs2')) ? '' : `IVS ${getValue('ivs1') || '__'} / ${getValue('ivs2') || '__'} mm`;
-                let pw = isEmpty(getValue('pw1')) && isEmpty(getValue('pw2')) ? '' : `PW ${getValue('pw1') || '__'} / ${getValue('pw2') || '__'} mm`;
-                let gruboscParts = [ivs, pw].filter(part => part);
-                if (gruboscParts.length > 0) {
-                    grubosc += gruboscParts.join(', ');
-                    addStyledParagraph(sectionChildren, grubosc);
-                }
-
-                // Szerokość pni
-                let szerokosc = 'Szerokość pni naczyniowych: ';
-                let aoOp = isEmpty(getValue('aoOp')) ? '' : `Ao op: ${getValue('aoOp')} mm`;
-                let aoAsc = isEmpty(getValue('aoAsc')) ? '' : `Ao asc: ${getValue('aoAsc')} mm`;
-                let pa = isEmpty(getValue('pa')) ? '' : `PA: ${getValue('pa')} mm`;
-                let szerokoscParts = [aoOp, aoAsc, pa].filter(part => part);
-                if (szerokoscParts.length > 0) {
-                    szerokosc += szerokoscParts.join(', ');
-                    addStyledParagraph(sectionChildren, szerokosc);
-                }
-
-                // EF
-                let ef = `Frakcja wyrzutowa lewej komory EF: ${getValue('ef') || '________'} %`;
-                addStyledParagraph(sectionChildren, ef);
-
-                // Zaburzenia
-                let zaburzenia = `Regionalne zaburzenia kurczliwości mięśnia L.V.: ${document.querySelector('input[name="zaburzenia"]:checked').value}`;
-                addStyledParagraph(sectionChildren, zaburzenia);
-                let zaburzeniaOpis = getValue('zaburzeniaOpis');
-                if (!isEmpty(zaburzeniaOpis)) addStyledParagraph(sectionChildren, zaburzeniaOpis, { italics: true });
-
-                // Zastawki
-                addStyledParagraph(sectionChildren, 'Struktura i funkcja zastawek serca:', { heading: HeadingLevel.HEADING_2 });
-
-                // Mitralna
-                let mitralnaEA = `Zastawka mitralna: E/A: ${getValue('mitralnaEA') || '...'}`;
-                addStyledParagraph(sectionChildren, mitralnaEA);
-                let mr = 'MR: ';
-                let mrParts = [];
-                if (!isEmpty(getValue('mrVc'))) mrParts.push(`VC: ${getValue('mrVc')} mm`);
-                if (!isEmpty(getValue('mrPisa'))) mrParts.push(`PISA: ${getValue('mrPisa')} mm`);
-                if (!isEmpty(getValue('mrLaa')) ) mrParts.push(`LAA: ${getValue('mrLaa')} cm²`);
-                if (!isEmpty(getValue('mrJetArea'))) mrParts.push(`jet area: ${getValue('mrJetArea')} cm²`);
-                if (mrParts.length > 0) addStyledParagraph(sectionChildren, mr + mrParts.join(', '));
-
-                let ms = 'MS: ';
-                let msParts = [];
-                if (!isEmpty(getValue('msMxPg'))) msParts.push(`MxPG: ${getValue('msMxPg')} mmHg`);
-                if (!isEmpty(getValue('msMnPg'))) msParts.push(`MnPG: ${getValue('msMnPg')} mmHg`);
-                if (!isEmpty(getValue('msVmax'))) msParts.push(`Vmax: ${getValue('msVmax')} m/s`);
-                if (!isEmpty(getValue('msSpap'))) msParts.push(`SPAP: ${getValue('msSpap')} mmHg`);
-                if (msParts.length > 0) addStyledParagraph(sectionChildren, ms + msParts.join(', '));
-
-                // Aortalna
-                let aortalna = `Zastawka aortalna: ${getValue('aortalnaOpis') || '...'}`;
-                addStyledParagraph(sectionChildren, aortalna);
-                let ar = 'AR: ';
-                let arParts = [];
-                if (!isEmpty(getValue('arVc'))) arParts.push(`VC: ${getValue('arVc')} mm`);
-                if (!isEmpty(getValue('arSzerokosc'))) arParts.push(`szerokość fali: ${getValue('arSzerokosc')} mm`);
-                if (!isEmpty(getValue('arLvot'))) arParts.push(`LVOT: ${getValue('arLvot')} mm`);
-                if (!isEmpty(getValue('arPht'))) arParts.push(`PHT: ${getValue('arPht')} ms`);
-                if (arParts.length > 0) addStyledParagraph(sectionChildren, ar + arParts.join(', '));
-
-                let as_ = 'AS: ';
-                let asParts = [];
-                if (!isEmpty(getValue('asMxPg'))) asParts.push(`MxPG: ${getValue('asMxPg')} mmHg`);
-                if (!isEmpty(getValue('asMnPg'))) asParts.push(`MnPG: ${getValue('asMnPg')} mmHg`);
-                if (!isEmpty(getValue('asVmax'))) asParts.push(`Vmax: ${getValue('asVmax')} m/s`);
-                if (!isEmpty(getValue('asAva'))) asParts.push(`AVA: ${getValue('asAva')} cm²`);
-                if (asParts.length > 0) addStyledParagraph(sectionChildren, as_ + asParts.join(', '));
-
-                // Trójdzielna
-                let trojdzielna = `Zastawka trójdzielna: ${getValue('trojdzielnaOpis') || '...'}`;
-                addStyledParagraph(sectionChildren, trojdzielna);
-                let trParts = [];
-                if (!isEmpty(getValue('trVc'))) trParts.push(`VC: ${getValue('trVc')} mm`);
-                if (!isEmpty(getValue('trJetArea'))) trParts.push(`jet area: ${getValue('trJetArea')} cm²`);
-                if (!isEmpty(getValue('trMxPg'))) trParts.push(`MxPG: ${getValue('trMxPg')} mmHg`);
-                if (!isEmpty(getValue('trSpap'))) trParts.push(`SPAP: ${getValue('trSpap')} mmHg`);
-                let tr = trParts.join(', ');
-                if (!isEmpty(getValue('trTapse'))) tr += ` TAPSE: ${getValue('trTapse')}`;
-                if (tr) addStyledParagraph(sectionChildren, tr);
-
-                // Pnia płucnego
-                let plucnego = `Zastawka pnia płucnego: ${getValue('plucnegoOpis') || '...'}`;
-                addStyledParagraph(sectionChildren, plucnego);
-                let ppParts = [];
-                if (!isEmpty(getValue('ppAct'))) ppParts.push(`AcT: ${getValue('ppAct')} ms`);
-                if (!isEmpty(getValue('ppVmaxSyst'))) ppParts.push(`Vmax(systole): ${getValue('ppVmaxSyst')} m/s`);
-                if (!isEmpty(getValue('ppVmaxDiast'))) ppParts.push(`Vmax(diastole): ${getValue('ppVmaxDiast')} m/s`);
-                if (!isEmpty(getValue('ppRvsp'))) ppParts.push(`RVSP: ${getValue('ppRvsp')} mmHg`);
-                if (ppParts.length > 0) addStyledParagraph(sectionChildren, ppParts.join(', '));
-
-                // Osierdzie
-                let osierdzie = `Osierdzie: ${getValue('osierdzie') || 'bez płynu'}`;
-                addStyledParagraph(sectionChildren, osierdzie);
-
-                // Opis dodatkowy
-                let opisDodatkowy = getValue('opisDodatkowy');
-                if (!isEmpty(opisDodatkowy)) {
-                    addStyledParagraph(sectionChildren, 'Opis dodatkowy:', { bold: true });
-                    addStyledParagraph(sectionChildren, opisDodatkowy);
-                }
-
-                // Wnioski
-                let wnioski = getValue('wnioski');
-                if (!isEmpty(wnioski)) {
-                    addStyledParagraph(sectionChildren, 'Wnioski:', { heading: HeadingLevel.HEADING_2 });
-                    addStyledParagraph(sectionChildren, wnioski);
-                }
-
-                Packer.toBlob(doc).then(blob => {
-                    saveAs(blob, 'Raport_Echokardiograficzny_' + (getValue('pacjent') || 'anonim') + '.docx');
-                }).catch(err => {
-                    console.error(err);
-                    alert('Błąd podczas generowania raportu: ' + err.message);
-                });
-            }
-        </script>
+            Packer.toBlob(doc).then(blob => {
+                saveAs(blob, `Raport_Echokardiograficzny_${getValue('pacjent') || 'anonim'}.docx`);
+            }).catch(err => console.error('Błąd generowania DOCX:', err));
+        }
+    </script>
 </body>
 </html>
