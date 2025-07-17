@@ -26,8 +26,11 @@ body {
 label {
     font-size: 0.9rem;
     color: #495057;
+    cursor: help;
 }
 pre#previewText {
     white-space: pre-wrap;
     font-family: 'Courier New', monospace;
+    overflow: auto;
+    max-height: 400px;
 }
